@@ -1,5 +1,3 @@
-// pages/index.js
-// pages/coming-soon.tsx
 const ComingSoonPage = () => {
 	return (
 		<div>
