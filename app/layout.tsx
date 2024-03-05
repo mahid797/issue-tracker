@@ -2,7 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import NavBar from './NavBar';
-import ComingSoonPage from './comingsoon';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,18 +15,11 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	const { NODE_ENV } = process.env;
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				{NODE_ENV === 'development' ? (
-					<ComingSoonPage />
-				) : (
-					<>
-						<NavBar />
-						<main>{children}</main>
-					</>
-				)}
+				<NavBar />
+				<main>{children}</main>
 			</body>
 		</html>
 	);
