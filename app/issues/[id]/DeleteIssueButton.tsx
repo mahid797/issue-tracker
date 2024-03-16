@@ -2,9 +2,8 @@
 import Spinner from '@/app/components/Spinner';
 import { AlertDialog, Button, Flex } from '@radix-ui/themes';
 import axios from 'axios';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
 	const router = useRouter();
@@ -28,7 +27,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
 		<>
 			<AlertDialog.Root>
 				<AlertDialog.Trigger>
-					<Button color="red" disabled={isDeleting}>
+					<Button color="red" disabled={isDeleting} id="customButton">
 						Delete Issue
 						{isDeleting && <Spinner />}
 					</Button>
@@ -41,12 +40,12 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
 					</AlertDialog.Description>
 					<Flex direction="row-reverse" mt="4" gap="3">
 						<AlertDialog.Cancel>
-							<Button variant="soft" color="gray">
+							<Button variant="soft" color="gray" id="customButton">
 								Cancel
 							</Button>
 						</AlertDialog.Cancel>
 						<AlertDialog.Action>
-							<Button color="red" onClick={deleteIssue}>
+							<Button color="red" onClick={deleteIssue} id="customButton">
 								Delete Issue
 							</Button>
 						</AlertDialog.Action>
@@ -62,6 +61,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
 						This issue could not be deleted. Please try again.
 					</AlertDialog.Description>
 					<Button
+						id="customButton"
 						color="gray"
 						variant="soft"
 						mt="2"
