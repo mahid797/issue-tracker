@@ -1,3 +1,10 @@
 .radix-themes {
 	--default-font-family: var(--font-inter);
 }
+
+#LogOut {
+	--cursor-menu-item: pointer;
+}
+#customButton {
+	--cursor-button: pointer;
+}
