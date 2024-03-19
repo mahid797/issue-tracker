@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<meta name="viewport" content="width=device-width, initial-scale=0.1" />
+			<meta name="viewport" content="width=1024" />
 			<body className={inter.className}>
 				{/* <NavBar /> */}
 				<main>{children}</main>
