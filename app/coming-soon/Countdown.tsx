@@ -7,7 +7,7 @@ const Countdown: React.FC = () => {
 	const [seconds, setSeconds] = useState<number>(0);
 
 	// Set your target date (e.g., launch date, event date)
-	const targetDate = new Date('2024-03-23T23:59:59');
+	const targetDate = new Date('2024-04-01T23:59:59');
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
