@@ -14,15 +14,15 @@ const nextConfig = {
       styledComponents: true,
     },
     
-	async redirects() {
-		return [
-			{
-				source: '/',
-				destination: '/coming-soon',
-				permanent: false,
-			},
-		];
-	},
+	// async redirects() {
+	// 	return [
+	// 		{
+	// 			source: '/',
+	// 			destination: '/coming-soon',
+	// 			permanent: false,
+	// 		},
+	// 	];
+	// },
 };
 
 module.exports = nextConfig
