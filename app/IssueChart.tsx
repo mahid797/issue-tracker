@@ -1,5 +1,4 @@
 'use client';
-
 import { Card } from '@radix-ui/themes';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 

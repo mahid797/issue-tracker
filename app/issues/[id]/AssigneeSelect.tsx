@@ -9,14 +9,14 @@ import toast, { Toaster } from 'react-hot-toast';
 const AssigneeSelect = ({ issue }: { issue: Issue }) => {
 	const { data: users, error, isLoading } = useUsers();
 
-	if (isLoading) return <Skeleton />;
+	if (isLoading) return <Skeleton height="1.75rem" />;
 
 	if (error) return null;
 
 	const assignIssue = (userId: string) => {
 		axios
 			.patch('/api/issues/' + issue.id, {
-				assignedToUserId: userId || null,
+				assignedToUserId: userId === 'unassigned' ? null : userId,
 			})
 			.then(() => toast.success('Issue Assigned!'))
 			.catch(() => toast.error('Changes could not be saved'));
@@ -31,7 +31,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
 				<Select.Content>
 					<Select.Group>
 						<Select.Label>Suggestions</Select.Label>
-						<Select.Item value="">Unassigned</Select.Item>
+						<Select.Item value="unassigned">Unassigned</Select.Item>
 						{users?.map((user) => (
 							<Select.Item key={user.id} value={user.id}>
 								{user.name}

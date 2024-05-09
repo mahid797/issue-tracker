@@ -27,11 +27,12 @@ const IssueStatusFilter = () => {
 				}
 				const query = params.size ? '?' + params.toString() : '';
 				router.push('/issues/list' + query);
+				router.refresh();
 			}}>
 			<Select.Trigger placeholder="Filter by status..." />
 			<Select.Content>
 				{statuses.map((status) => (
-					<Select.Item key={status.value || ''} value={status.value || ''}>
+					<Select.Item key={status.value || ''} value={status.value || 'All'}>
 						{status.label}
 					</Select.Item>
 				))}

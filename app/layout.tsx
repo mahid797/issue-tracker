@@ -7,6 +7,10 @@ import QueryClientProvider from './QueryClientProvider';
 import AuthProvider from './auth/provider';
 import './globals.css';
 import './theme-config.css';
+import { ThemeProvider } from 'next-themes';
+import DarkThemeProvider from './DarkThemeProvider';
+import Image from 'next/image';
+import bgImage from '../public/bg.svg';
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -28,12 +32,23 @@ export default function RootLayout({
 			<body className={inter.variable} suppressHydrationWarning={true}>
 				<QueryClientProvider>
 					<AuthProvider>
-						<Theme appearance="light" accentColor="jade">
-							<NavBar />
-							<main className="p-5">
-								<Container>{children}</Container>
-							</main>
-						</Theme>
+						<DarkThemeProvider attribute="class">
+							<Theme accentColor="jade" panelBackground="translucent">
+								<Image
+									src={bgImage}
+									alt="Background"
+									fill
+									style={{
+										objectFit: 'cover',
+										zIndex: -1,
+									}}
+								/>
+								<NavBar />
+								<main className="p-5">
+									<Container>{children}</Container>
+								</main>
+							</Theme>
+						</DarkThemeProvider>
 					</AuthProvider>
 				</QueryClientProvider>
 			</body>

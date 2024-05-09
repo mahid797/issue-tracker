@@ -1,6 +1,8 @@
-import { IssueStatusBadge, Link } from '@/app/components';
+import { IssueStatusBadge, Link, Skeleton } from '@/app/components';
+// import IssueStatusSelect from '@/app/components/IssueStatusSelect';
 import { Issue, Status } from '@prisma/client';
 import { Table } from '@radix-ui/themes';
+import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa6';
 
@@ -10,6 +12,14 @@ export interface IssueQuery {
 	sortOrder: 'asc' | 'desc';
 	page: string;
 }
+
+const IssueStatusSelect = dynamic(
+	() => import('@/app/components/IssueStatusSelect'),
+	{
+		ssr: false,
+		loading: () => <Skeleton width="5.75rem" height="1.1rem" />,
+	}
+);
 
 interface Props {
 	searchParams: IssueQuery;
@@ -25,7 +35,7 @@ const IssueTable = ({ searchParams, issues }: Props) => {
 
 	return (
 		<div>
-			<Table.Root variant="surface">
+			<Table.Root variant="surface" size="3">
 				<Table.Header>
 					<Table.Row>
 						{columns.map((column) => (
@@ -62,11 +72,15 @@ const IssueTable = ({ searchParams, issues }: Props) => {
 							<Table.Cell className="flex justify-between">
 								<Link href={`/issues/${issue.id}`}>{issue.title}</Link>
 								<div className="block md:hidden">
-									<IssueStatusBadge status={issue.status} />
+									{/* <IssueStatusBadge status={issue.status} /> */}
+									{/* <IssueStatusSelect status={issue.status} id={issue.id} /> */}
+									<IssueStatusSelect issue={issue} />
 								</div>
 							</Table.Cell>
 							<Table.Cell className="hidden md:table-cell">
-								<IssueStatusBadge status={issue.status} />
+								{/* <IssueStatusBadge status={issue.status} /> */}
+								{/* <IssueStatusSelect status={issue.status} id={issue.id} /> */}
+								<IssueStatusSelect issue={issue} />
 							</Table.Cell>
 							<Table.Cell className="hidden md:table-cell">
 								{issue.createdAt.toDateString()}

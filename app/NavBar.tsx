@@ -3,6 +3,7 @@ import { Skeleton } from '@/app/components';
 import {
 	Avatar,
 	Box,
+	Button,
 	Container,
 	DropdownMenu,
 	Flex,
@@ -10,22 +11,29 @@ import {
 } from '@radix-ui/themes';
 import classnames from 'classnames';
 import { useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AiFillBug } from 'react-icons/ai';
+import DarkModeToggle from './components/DarkModeToggle';
+import AppIcon from './components/AppLogo';
 
 const NavBar = () => {
 	return (
-		<nav className="px-5 py-3 mb-5 border-b ">
+		<nav className="px-5 py-3 mb-5 border-b">
 			<Container>
 				<Flex justify="between" className="text-lg font-medium">
 					<Flex align="center" gap="4">
 						<Link href="/">
-							<AiFillBug size={22} />
+							{/* <AiFillBug size={22} /> */}
+							<AppIcon />
 						</Link>
 						<NavLinks />
 					</Flex>
-					<AuthStatus />
+					<div className="flex gap-5">
+						<DarkModeToggle />
+						<AuthStatus />
+					</div>
 				</Flex>
 			</Container>
 		</nav>
@@ -61,7 +69,8 @@ const NavLinks = () => {
 const AuthStatus = () => {
 	const { status, data: session } = useSession();
 
-	if (status === 'loading') return <Skeleton width="3.8rem" height="1.2rem" />;
+	if (status === 'loading')
+		return <Skeleton borderRadius="50%" width="1.7rem" height="1.7rem" />;
 
 	if (status === 'unauthenticated')
 		return (

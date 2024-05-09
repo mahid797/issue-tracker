@@ -8,3 +8,21 @@
 #customButton {
 	--cursor-button: pointer;
 }
+
+.statusBadge {
+	[data-accent-color='tomato'] {
+		--accent-12: var(--tomato-11);
+		--accent-a12: var(--tomato-a11);
+		font-weight: 500;
+	}
+	[data-accent-color='indigo'] {
+		--accent-12: var(--indigo-11);
+		--accent-a12: var(--indigo-a11);
+		font-weight: 500;
+	}
+	[data-accent-color='lime'] {
+		--accent-12: var(--lime-11);
+		--accent-a12: var(--lime-a11);
+		font-weight: 500;
+	}
+}

@@ -5,6 +5,7 @@ import { Flex } from '@radix-ui/themes';
 import { Metadata } from 'next';
 import IssueActions from './IssueActions';
 import IssueTable, { columnNames, IssueQuery } from './IssueTable';
+import { Toaster } from 'react-hot-toast';
 
 interface Props {
 	searchParams: IssueQuery;
@@ -45,6 +46,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
 				currentPage={page}
 				itemCount={issueCount}
 			/>
+			<Toaster />
 		</Flex>
 	);
 };
