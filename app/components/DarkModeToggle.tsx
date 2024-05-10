@@ -1,6 +1,5 @@
-import { Button, Switch } from '@radix-ui/themes';
 import { useTheme } from 'next-themes';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const DarkModeToggle = () => {

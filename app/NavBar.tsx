@@ -3,7 +3,6 @@ import { Skeleton } from '@/app/components';
 import {
 	Avatar,
 	Box,
-	Button,
 	Container,
 	DropdownMenu,
 	Flex,
@@ -11,12 +10,11 @@ import {
 } from '@radix-ui/themes';
 import classnames from 'classnames';
 import { useSession } from 'next-auth/react';
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AiFillBug } from 'react-icons/ai';
-import DarkModeToggle from './components/DarkModeToggle';
+// import { AiFillBug } from 'react-icons/ai';
 import AppIcon from './components/AppLogo';
+import DarkModeToggle from './components/DarkModeToggle';
 
 const NavBar = () => {
 	return (

@@ -1,13 +1,11 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import IssueStatusBadge from './IssueStatusBadge';
 import { Issue, Status } from '@prisma/client';
-import { Badge, Spinner, Select, Theme } from '@radix-ui/themes';
+import { Select, Spinner, Theme } from '@radix-ui/themes';
 import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { statusMap } from './IssueStatusBadge';
-import styles from './issue-status-select.module.css';
 
 const IssueStatusSelect = ({ issue }: { issue: Issue }) => {
 	const router = useRouter();

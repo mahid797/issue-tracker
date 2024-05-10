@@ -2,15 +2,14 @@ import { Container, Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Image from 'next/image';
+import bgImage from '../public/bg.svg';
+import DarkThemeProvider from './DarkThemeProvider';
 import NavBar from './NavBar';
 import QueryClientProvider from './QueryClientProvider';
 import AuthProvider from './auth/provider';
 import './globals.css';
 import './theme-config.css';
-import { ThemeProvider } from 'next-themes';
-import DarkThemeProvider from './DarkThemeProvider';
-import Image from 'next/image';
-import bgImage from '../public/bg.svg';
 
 const inter = Inter({
 	subsets: ['latin'],
