@@ -7,9 +7,9 @@ const Countdown: React.FC = () => {
 	const [seconds, setSeconds] = useState<number>(0);
 
 	// Set your target date (e.g., launch date, event date)
-	const targetDate = new Date('2024-05-10T23:59:59');
 
 	useEffect(() => {
+		const targetDate = new Date('2024-05-10T23:59:59');
 		const intervalId = setInterval(() => {
 			const now = new Date();
 			const timeRemaining = targetDate.getTime() - now.getTime();

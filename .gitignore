@@ -37,8 +37,3 @@ next-env.d.ts
 
 .vercel
 
-# Sentry Config File
-.sentryclirc
-
-# Sentry Config File
-.sentryclirc
