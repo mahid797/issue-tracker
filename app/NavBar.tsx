@@ -7,12 +7,12 @@ import {
 	DropdownMenu,
 	Flex,
 	Text,
+	Tooltip,
 } from '@radix-ui/themes';
 import classnames from 'classnames';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// import { AiFillBug } from 'react-icons/ai';
 import AppIcon from './components/AppLogo';
 import DarkModeToggle from './components/DarkModeToggle';
 
@@ -23,7 +23,6 @@ const NavBar = () => {
 				<Flex justify="between" className="text-lg font-medium">
 					<Flex align="center" gap="4">
 						<Link href="/">
-							{/* <AiFillBug size={22} /> */}
 							<AppIcon />
 						</Link>
 						<NavLinks />
@@ -72,11 +71,13 @@ const AuthStatus = () => {
 
 	if (status === 'unauthenticated')
 		return (
-			<Link
-				href="/api/auth/signin"
-				className="hover:bg-emerald-50 py-0.5 px-2.5 rounded-md nav-link text-base">
-				Login
-			</Link>
+			<Tooltip content="Login to access all functions">
+				<Link
+					href="/api/auth/signin"
+					className="hover:bg-emerald-50 py-0.5 px-2.5 rounded-md nav-link text-base">
+					Login
+				</Link>
+			</Tooltip>
 		);
 
 	return (

@@ -3,9 +3,9 @@ import prisma from '@/prisma/client';
 import { Status } from '@prisma/client';
 import { Flex } from '@radix-ui/themes';
 import { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
 import IssueActions from './IssueActions';
 import IssueTable, { columnNames, IssueQuery } from './IssueTable';
-import { Toaster } from 'react-hot-toast';
 
 interface Props {
 	searchParams: IssueQuery;

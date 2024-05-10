@@ -1,18 +1,22 @@
 'use client';
 
-import * as React from 'react';
 import { ThemeProvider } from 'next-themes';
+import * as React from 'react';
 
 interface DarkThemeProviderProps {
 	children: React.ReactNode;
-	attribute: string; // Add this line
+	attribute: string;
 }
 
 const DarkThemeProvider: React.FC<DarkThemeProviderProps> = ({
 	children,
 	...props
 }) => {
-	return <ThemeProvider {...props}>{children}</ThemeProvider>;
+	return (
+		<ThemeProvider defaultTheme="light" {...props}>
+			{children}
+		</ThemeProvider>
+	);
 };
 
 export default DarkThemeProvider;

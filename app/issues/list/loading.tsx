@@ -3,10 +3,10 @@ import { Table } from '@radix-ui/themes';
 import IssueActions from './IssueActions';
 
 const LoadingIssuesPage = () => {
-	const issues = [1, 2, 3, 4, 5];
+	const issues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 	return (
-		<div>
+		<div className="flex flex-col gap-2">
 			<IssueActions />
 			<Table.Root variant="surface">
 				<Table.Header>
