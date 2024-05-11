@@ -12,6 +12,7 @@ const nextConfig = {
 		styledComponents: true,
 	},
 
+	//Used with Coming Soon Page
 	// async redirects() {
 	// 	return [
 	// 		{

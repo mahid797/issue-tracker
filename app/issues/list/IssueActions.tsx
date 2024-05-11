@@ -1,4 +1,4 @@
-import { Button, Flex, Skeleton } from '@radix-ui/themes';
+import { Button, Flex, Skeleton, Tooltip } from '@radix-ui/themes';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
@@ -11,9 +11,11 @@ const IssueActions = () => {
 	return (
 		<Flex justify="between">
 			<IssueStatusFilter />
-			<Button variant="solid" highContrast id="customButton">
-				<Link href="/issues/new">New Issue</Link>
-			</Button>
+			<Tooltip content="Login to access all functions">
+				<Button variant="solid" highContrast id="customButton">
+					<Link href="/issues/new">New Issue</Link>
+				</Button>
+			</Tooltip>
 		</Flex>
 	);
 };

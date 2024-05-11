@@ -9,7 +9,7 @@
 	--cursor-button: pointer;
 }
 
-.statusBadge {
+.selectBadge {
 	[data-accent-color='tomato'] {
 		--accent-12: var(--tomato-11);
 		--accent-a12: var(--tomato-a11);

@@ -1,7 +1,8 @@
+import authOptions from '@/app/auth/authOptions';
 import { IssueStatusBadge, Link, Skeleton } from '@/app/components';
-// import IssueStatusSelect from '@/app/components/IssueStatusSelect';
 import { Issue, Status } from '@prisma/client';
 import { Table } from '@radix-ui/themes';
+import { getServerSession } from 'next-auth';
 import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa6';
@@ -26,7 +27,8 @@ interface Props {
 	issues: Issue[];
 }
 
-const IssueTable = ({ searchParams, issues }: Props) => {
+const IssueTable = async ({ searchParams, issues }: Props) => {
+	const session = await getServerSession(authOptions);
 	const toggleOrder = () => {
 		return !searchParams.sortOrder || searchParams.sortOrder === 'desc'
 			? 'asc'
@@ -72,15 +74,13 @@ const IssueTable = ({ searchParams, issues }: Props) => {
 							<Table.Cell className="flex justify-between">
 								<Link href={`/issues/${issue.id}`}>{issue.title}</Link>
 								<div className="block md:hidden">
-									{/* <IssueStatusBadge status={issue.status} /> */}
-									{/* <IssueStatusSelect status={issue.status} id={issue.id} /> */}
-									<IssueStatusSelect issue={issue} />
+									{!session && <IssueStatusBadge status={issue.status} />}
+									{session && <IssueStatusSelect issue={issue} />}
 								</div>
 							</Table.Cell>
 							<Table.Cell className="hidden md:table-cell">
-								{/* <IssueStatusBadge status={issue.status} /> */}
-								{/* <IssueStatusSelect status={issue.status} id={issue.id} /> */}
-								<IssueStatusSelect issue={issue} />
+								{!session && <IssueStatusBadge status={issue.status} />}
+								{session && <IssueStatusSelect issue={issue} />}
 							</Table.Cell>
 							<Table.Cell className="hidden md:table-cell">
 								{issue.createdAt.toDateString()}

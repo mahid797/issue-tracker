@@ -1,6 +1,8 @@
+import authOptions from '@/app/auth/authOptions';
 import { IssueStatusBadge, Skeleton } from '@/app/components';
 import { Issue } from '@prisma/client';
 import { Card, Flex, Heading, Text } from '@radix-ui/themes';
+import { getServerSession } from 'next-auth';
 import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 
@@ -12,16 +14,17 @@ const IssueStatusSelect = dynamic(
 	}
 );
 
-const IssueDetails = ({ issue }: { issue: Issue }) => {
+const IssueDetails = async ({ issue }: { issue: Issue }) => {
+	const session = await getServerSession(authOptions);
 	return (
 		<>
 			<Heading className="pt-5">{issue.title}</Heading>
 			<Flex className="space-x-5" my="3">
 				<Text className="self-end">{issue.createdAt.toDateString()}</Text>
-				{/* <IssueStatusSelect status={issue.status} id={issue.id} /> */}
-				<IssueStatusSelect issue={issue} />
+				{!session && <IssueStatusBadge status={issue.status} />}
+				{session && <IssueStatusSelect issue={issue} />}
 			</Flex>
-			<Card className="prose max-w-full" mt="4">
+			<Card className="prose max-w-full dark:text-green-200" mt="4">
 				<ReactMarkdown>{issue.description}</ReactMarkdown>
 			</Card>
 		</>

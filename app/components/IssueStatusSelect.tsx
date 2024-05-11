@@ -37,7 +37,7 @@ const IssueStatusSelect = ({ issue }: { issue: Issue }) => {
 
 	return (
 		<>
-			<div className="statusBadge">
+			<div className="selectBadge">
 				<Select.Root
 					size="1"
 					value={selectedStatus}
