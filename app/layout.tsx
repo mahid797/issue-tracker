@@ -1,5 +1,6 @@
+import './globals.css';
+// import '@radix-ui/themes/styles.css';
 import { Container, Theme } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
@@ -8,7 +9,6 @@ import DarkThemeProvider from './DarkThemeProvider';
 import NavBar from './NavBar';
 import QueryClientProvider from './QueryClientProvider';
 import AuthProvider from './auth/provider';
-import './globals.css';
 import './theme-config.css';
 
 const inter = Inter({
