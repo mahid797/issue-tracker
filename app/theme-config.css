@@ -9,7 +9,7 @@
 	--cursor-button: pointer;
 }
 
-/* .selectBadge {
+.selectBadge {
 	[data-accent-color='tomato'] {
 		--accent-12: var(--tomato-11);
 		--accent-a12: var(--tomato-a11);
@@ -25,4 +25,4 @@
 		--accent-a12: var(--lime-a11);
 		font-weight: 500;
 	}
-} */
+}
