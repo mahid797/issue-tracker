@@ -1,6 +1,6 @@
 import authOptions from '@/app/auth/authOptions';
 import { IssueStatusBadge, Link, Skeleton } from '@/app/components';
-import { Issue, Status } from '@prisma/client';
+import { Issue, Prisma, Status } from '@prisma/client';
 import { Avatar, Table } from '@radix-ui/themes';
 import { getServerSession } from 'next-auth';
 import dynamic from 'next/dynamic';
@@ -22,9 +22,13 @@ const IssueStatusSelect = dynamic(
 	}
 );
 
+const issues = Prisma.validator<Prisma.IssueDefaultArgs>()({
+	include: { assignedToUser: true },
+});
+
 interface Props {
 	searchParams: IssueQuery;
-	issues: Issue[];
+	issues: Prisma.IssueGetPayload<typeof issues>[];
 }
 
 const IssueTable = async ({ searchParams, issues }: Props) => {
@@ -66,11 +70,6 @@ const IssueTable = async ({ searchParams, issues }: Props) => {
 								</NextLink>
 							</Table.ColumnHeaderCell>
 						))}
-						{/* <Table.ColumnHeaderCell
-							justify="center"
-							className="hidden lg:table-cell">
-							Assigned To
-						</Table.ColumnHeaderCell> */}
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
@@ -90,7 +89,7 @@ const IssueTable = async ({ searchParams, issues }: Props) => {
 							<Table.Cell className="hidden md:table-cell">
 								{issue.createdAt.toDateString()}
 							</Table.Cell>
-							{/* <Table.Cell className="hidden lg:table-cell ">
+							<Table.Cell className="hidden lg:table-cell ">
 								{issue.assignedToUser ? (
 									<Avatar
 										className="size-5 ml-10"
@@ -100,9 +99,11 @@ const IssueTable = async ({ searchParams, issues }: Props) => {
 										variant="soft"
 									/>
 								) : (
-									<span className="text-gray-300 ml-1">Unassigned</span>
+									<span className="text-gray-300 dark:text-gray-700 ml-1">
+										Unassigned
+									</span>
 								)}
-							</Table.Cell> */}
+							</Table.Cell>
 						</Table.Row>
 					))}
 				</Table.Body>
@@ -127,11 +128,11 @@ const columns: {
 		value: 'createdAt',
 		className: 'hidden md:table-cell',
 	},
-	// {
-	// 	label: 'Assigned To',
-	// 	value: 'assignedToUserId',
-	// 	className: 'hidden lg:table-cell',
-	// },
+	{
+		label: 'Assigned To',
+		value: 'assignedToUserId',
+		className: 'hidden lg:table-cell',
+	},
 ];
 
 export const columnNames = columns.map((column) => column.value);

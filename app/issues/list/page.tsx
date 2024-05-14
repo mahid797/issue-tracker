@@ -23,10 +23,6 @@ const IssuesPage = async ({ searchParams }: Props) => {
 		? { [searchParams.orderBy]: searchParams.sortOrder }
 		: ({ createdAt: 'desc' } as any);
 
-	const orderB = columnNames.includes(searchParams.orderBy)
-		? { [searchParams.orderBy]: searchParams.sortOrder }
-		: undefined;
-
 	const page = parseInt(searchParams.page) || 1;
 	const pageSize = 10;
 
