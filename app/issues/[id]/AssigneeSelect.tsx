@@ -50,8 +50,11 @@ const useUsers = () =>
 		queryKey: ['users'],
 		queryFn: () => axios.get('/api/users').then((res) => res.data),
 		// staleTime: 60 * 1000, //60s
-		refetchInterval: 2 * 60 * 1000,
-		retry: 3,
+		// refetchInterval: 2 * 60 * 1000,
+		// retry: 3,
+		refetchOnWindowFocus: 'always',
+		refetchOnMount: 'always',
+		refetchOnReconnect: 'always',
 	});
 
 export default AssigneeSelect;
