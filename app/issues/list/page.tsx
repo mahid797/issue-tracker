@@ -21,7 +21,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
 	const orderBy = columnNames.includes(searchParams.orderBy)
 		? { [searchParams.orderBy]: searchParams.sortOrder }
-		: undefined;
+		: ({ createdAt: 'desc' } as any);
 
 	const page = parseInt(searchParams.page) || 1;
 	const pageSize = 10;
@@ -33,6 +33,9 @@ const IssuesPage = async ({ searchParams }: Props) => {
 		orderBy,
 		skip: (page - 1) * pageSize,
 		take: pageSize,
+		include: {
+			assignedToUser: true,
+		},
 	});
 
 	const issueCount = await prisma.issue.count({ where });
