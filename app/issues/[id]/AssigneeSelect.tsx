@@ -49,11 +49,8 @@ const useUsers = () =>
 	useQuery<User[]>({
 		queryKey: ['users'],
 		queryFn: () => axios.get('/api/users').then((res) => res.data),
-		staleTime: 30 * 1000, //60s
-		// refetchInterval: 2 * 60 * 1000,
+		staleTime: 60 * 1000, //60s
 		retry: 3,
 	});
-
-export const dynamic = 'force-dynamic';
 
 export default AssigneeSelect;
