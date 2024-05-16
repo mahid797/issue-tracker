@@ -20,16 +20,16 @@ const NavBar = () => {
 	return (
 		<nav className="px-5 py-3 mb-5 border-b dark:border-b-emerald-950">
 			<Container>
-				<Flex justify="between" className="text-lg font-medium">
-					<Flex align="center" gap="4">
+				<Flex justify="between" className="text-lg md:text-xl font-medium">
+					<Flex align="center" className="gap-2 md:gap-4">
 						<Link href="/">
 							<AppIcon />
 						</Link>
 						<NavLinks />
 					</Flex>
-					<div className="flex gap-5">
-						<DarkModeToggle />
+					<div className="flex md:gap-5 gap-4 items-center">
 						<AuthStatus />
+						<DarkModeToggle />
 					</div>
 				</Flex>
 			</Container>
@@ -46,7 +46,7 @@ const NavLinks = () => {
 	];
 
 	return (
-		<ul className="flex space-x-4">
+		<ul className="flex md:space-x-4 space-x-2">
 			{links.map((link) => (
 				<li key={link.href}>
 					<Link
@@ -74,7 +74,7 @@ const AuthStatus = () => {
 			<Tooltip content="Login to access all functions">
 				<Link
 					href="/api/auth/signin"
-					className="hover:bg-emerald-50 py-0.5 px-2.5 rounded-md nav-link text-base">
+					className="hover:bg-emerald-50 py-1.5 md:px-2.5 rounded-md nav-link md:text-base text-lg">
 					Login
 				</Link>
 			</Tooltip>
