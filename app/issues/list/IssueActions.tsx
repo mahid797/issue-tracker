@@ -12,7 +12,7 @@ const IssueActions = () => {
 		<Flex justify="between">
 			<IssueStatusFilter />
 			<Tooltip content="Login to access all functions">
-				<Button variant="solid" highContrast id="customButton">
+				<Button variant="solid" highContrast id="customButton" color="mint">
 					<Link href="/issues/new">New Issue</Link>
 				</Button>
 			</Tooltip>

@@ -18,7 +18,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 
 const NavBar = () => {
 	return (
-		<nav className="px-5 py-3 mb-5 border-b">
+		<nav className="px-5 py-3 mb-5 border-b dark:border-b-emerald-950">
 			<Container>
 				<Flex justify="between" className="text-lg font-medium">
 					<Flex align="center" gap="4">
