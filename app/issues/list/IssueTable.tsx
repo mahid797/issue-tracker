@@ -99,7 +99,7 @@ const IssueTable = async ({ searchParams, issues }: Props) => {
 										variant="soft"
 									/>
 								) : (
-									<span className="text-gray-300 dark:text-gray-700 ml-1">
+									<span className="text-gray-300 dark:text-green-900 ml-1">
 										Unassigned
 									</span>
 								)}

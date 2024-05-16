@@ -9,7 +9,12 @@ interface Props {
 const Link = ({ href, children }: Props) => {
 	return (
 		<NextLink href={href} passHref legacyBehavior>
-			<RadixLink weight="medium">{children}</RadixLink>
+			<RadixLink
+				weight="medium"
+				underline="hover"
+				className="dark:text-emerald-200 max-[400px]:truncate max-[400px]:w-[200px]">
+				{children}
+			</RadixLink>
 		</NextLink>
 	);
 };
